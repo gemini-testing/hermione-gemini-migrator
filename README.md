@@ -31,12 +31,32 @@ module.exports = {
                 }
             }
             commandReplacers: {
-                url: (code, argList) => {
-                    return `
-                        ${code.replace('url', 'customUrl')}
-                        await browser.pause(500);
-                    `;
-                }
+                url: code => code.replace(/url\((.*?)\);/, (match, p1) => {
+                    return `customUrl(${JSON.stringify(qs.parse(url.parse(p1.replace(/\"/g, '')).query))})`;
+                })
+            },
+            afterEach: (inputSuite, outputTestCollection, data, utils) => {
+                const {inputFilePath, outputFilePath, inputScreenPaths, outputScreenPaths} = data;
+
+                // Pring filepathh
+                console.log(outputFilePath);
+
+                // Print input test names
+                utils.suiteWalker(inputSuite, suite => {
+                    if (suite.url && !(suite.children && suite.children.length)) console.log(suite.fullName);
+                });
+
+                // Print output test names
+                const testDict = {};
+
+                outputTestCollection.eachTest(test => {
+                    const fullName = test.fullTitle();
+
+                    if (testDict[fullName]) return;
+                    
+                    testDict[fullName] = true;
+                    console.log(fullName);
+                });
             }
         }
     },
@@ -61,6 +81,7 @@ npx hermione --gemini-migrate
 | `filePathReplacer` | `filePath => filePath.replace(/gemini/g, 'hermione')` | Function for replacing substring in test `filePath`. |
 | `browserIdReplacer` | `browserId => browserId` | Function for replacing substring in `browserId`. |
 | `commandReplacers` | `{}` | Object with functions for replacing default command to custom in hermione tests. |
+| `afterEach` | `(inputSuite, outputTestCollection, data, utils) => {}` | Async/sync function for call callback after writting each test file. |
 
 ## Licence
 
