@@ -35,8 +35,17 @@ module.exports = {
                     return `customUrl(${JSON.stringify(qs.parse(url.parse(p1.replace(/\"/g, '')).query))})`;
                 })
             },
-            afterEach: (inputSuite, outputTestCollection, data, utils) => {
-                const {inputFilePath, outputFilePath, inputScreenPaths, outputScreenPaths} = data;
+            afterEach: (hermione) => {
+                const {
+                    inputSuite,
+                    outputTestCollection,
+                    inputFilePath,
+                    outputFilePath,
+                    inputScreenPaths,
+                    outputScreenPaths,
+                    config,
+                    utils
+                } = hermione.geminiMigrator;
 
                 // Pring filepathh
                 console.log(outputFilePath);
@@ -81,7 +90,11 @@ npx hermione --gemini-migrate
 | `filePathReplacer` | `filePath => filePath.replace(/gemini/g, 'hermione')` | Function for replacing substring in test `filePath`. |
 | `browserIdReplacer` | `browserId => browserId` | Function for replacing substring in `browserId`. |
 | `commandReplacers` | `{}` | Object with functions for replacing default command to custom in hermione tests. |
-| `afterEach` | `(inputSuite, outputTestCollection, data, utils) => {}` | Async/sync function for call callback after writting each test file. |
+| `codeFormatter` | `code => code` | Function for formatting code before writting. For example: [prettier](https://github.com/prettier/prettier) |
+| `before` | `hermione => {}` | Async or sync function that is called before writting all test files. |
+| `beforeEach` | `hermione => {}` | Async or sync function that is called before writting each test file. |
+| `afterEach` | `hermione => {}` | Async or sync function that is called after writting each test file. |
+| `after` | `hermione => {}` | Async or sync function that is called after writting all test files. |
 
 ## Licence
 
