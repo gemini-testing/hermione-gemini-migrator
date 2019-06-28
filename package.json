@@ -1,0 +1,42 @@
+{
+  "name": "hermione-gemini-migrator",
+  "version": "0.1.0-beta-3",
+  "description": "Plugin for hermione for migration gemini tests.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruslankhh/hermione-gemini-migrator.git"
+  },
+  "keywords": [
+    "hermione",
+    "hermione-plugin",
+    "gemini",
+    "gemini-migrator"
+  ],
+  "author": "Ruslan Khusnetdinov <ruslankhh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruslankhh/hermione-gemini-migrator/issues"
+  },
+  "homepage": "https://github.com/ruslankhh/hermione-gemini-migrator#readme",
+  "dependencies": {
+    "@babel/helpers": "^7.4.3",
+    "@babel/parser": "^7.4.5",
+    "@babel/template": "^7.4.0",
+    "@babel/traverse": "^7.4.3",
+    "bluebird": "^3.5.4",
+    "events": "^3.0.0",
+    "fast-glob": "^2.2.6",
+    "gemini": "^7.4.1",
+    "lodash": "^4.17.11",
+    "proxy-deep": "^2.1.1",
+    "yargs-parser": "^13.1.1"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.4.4",
+    "@babel/types": "^7.4.4"
+  }
+}
