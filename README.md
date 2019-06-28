@@ -84,7 +84,7 @@ npx hermione --gemini-migrate
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `enebled` | `false` | Option for enable/disable the plugin. |
+| `enabled` | `false` | Option for enable/disable the plugin. |
 | `geminiConfig` | `'.gemini.js'` | Path to Gemini config. |
 | `inputPatterns` | `'**/*.gemini.js'` | Patterns for searching gemini files. Read more: [fast-glob](https://github.com/mrmlnc/fast-glob)|
 | `filePathReplacer` | `filePath => filePath.replace(/gemini/g, 'hermione')` | Function for replacing substring in test `filePath`. |
