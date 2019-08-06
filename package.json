@@ -1,6 +1,6 @@
 {
   "name": "hermione-gemini-migrator",
-  "version": "0.1.0",
+  "version": "0.1.1-beta-3",
   "description": "Plugin for hermione for migration gemini tests.",
   "main": "lib/index.js",
   "scripts": {
